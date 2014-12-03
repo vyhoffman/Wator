@@ -19,9 +19,6 @@ public abstract class Denizen {
     /** The column containing this Denizen. */
     int myColumn;
     
-    /** The number of time units this Denizen can survive without starving. */
-    int timeToStarvation;
-    
     /** The number of time units this Denizen tries to give birth. */
     int timeToGestation;
     
@@ -47,15 +44,15 @@ public abstract class Denizen {
        myColumn = column;
    }
    
-/**
- * @return The color of this Denizen.
- */
-public abstract Color getColor();
+	/**
+	 * @return The color of this Denizen.
+	 */
+	public abstract Color getColor();
     
     /**
      * @return A randomly chosen Direction.
      */
-    private Direction chooseRandomDirection() {
+    public Direction chooseRandomDirection() { //why can't shark 'see' if protected?
         int n = rand.nextInt(4);
         switch(n) {
             case 0: return Direction.LEFT;
@@ -73,13 +70,13 @@ public abstract Color getColor();
      * @param ocean The Ocean containing all the Denizens.
      */
     public void makeOneStep(Ocean ocean) {
-        Denizen[][] array = ocean.getArray();
-        timeToStarvation -= 1;
-        if (timeToStarvation <= 0) {
-            array[myRow][myColumn] = WATER;
-            System.out.println(this + " starved.");
-            return;
-        }
+//        Denizen[][] array = ocean.getArray();
+//        timeToStarvation -= 1;
+//        if (timeToStarvation <= 0) {
+//            array[myRow][myColumn] = WATER;
+//            System.out.println(this + " starved.");
+//            return;
+//        }
         Direction direction = chooseRandomDirection();
         if (canMove(ocean, direction)) {
             moveAndMaybeGiveBirth(ocean, direction);

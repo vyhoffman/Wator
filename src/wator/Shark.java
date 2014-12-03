@@ -7,6 +7,9 @@ import java.awt.Color;
  */
 public class Shark extends Denizen {
     
+    /** The number of time units this Denizen can survive without starving. */
+    int timeToStarvation;
+    
     /**
      * Constructs a Shark at a given (row, column) location. 
      * @param row The row to contain the Shark.
@@ -24,6 +27,21 @@ public class Shark extends Denizen {
     @Override
     public Color getColor() {
         return Color.red;
+    }
+    
+    @Override
+    public void makeOneStep(Ocean ocean) {
+        Denizen[][] array = ocean.getArray();
+        timeToStarvation -= 1;
+        if (timeToStarvation <= 0) {
+            array[myRow][myColumn] = WATER;
+            System.out.println(this + " starved.");
+            return;
+        }
+        Direction direction = chooseRandomDirection();
+        if (canMove(ocean, direction)) {
+            moveAndMaybeGiveBirth(ocean, direction);
+        }
     }
 
     /* (non-Javadoc)

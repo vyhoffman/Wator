@@ -13,7 +13,7 @@ public class Ocean extends Observable {
     private int nRows;
     private int nColumns;
     private static Random rand = new Random();
-    private int delay;
+    private int delay=500;
     private Timer timer;
 
     /**
@@ -169,7 +169,7 @@ public class Ocean extends Observable {
     public void setRunning(boolean running) {
         if (running) {
             timer = new Timer(true);
-            timer.schedule(new Strobe(), 0, 250); //
+            timer.schedule(new Strobe(), 0, delay); //
         } else {
             timer.cancel();
         }
@@ -181,6 +181,9 @@ public class Ocean extends Observable {
      */
     public void setDelay(int delay) {
         this.delay = delay;
+        if (timer != null) {
+        	timer.schedule(new Strobe(), delay);
+        }
     }
      
     /**

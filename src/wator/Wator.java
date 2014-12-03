@@ -149,6 +149,8 @@ public class Wator extends JFrame {
                 int sliderValue = speedControl.getValue();
                 int delay = 10000 - 100 * sliderValue;
                 ocean.setDelay(delay);
+                //ocean.setRunning(!running);
+                //ocean.setRunning(running);
             }
             
         });
