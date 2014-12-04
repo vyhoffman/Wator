@@ -13,7 +13,7 @@ public class Ocean extends Observable {
     private int nRows;
     private int nColumns;
     private static Random rand = new Random();
-    private int delay=500;
+    private int delay=50;
     private Timer timer;
 
     /**
@@ -79,7 +79,7 @@ public class Ocean extends Observable {
      * @return The contents of the adjacent array location.
      */
     public Denizen get(int row, int column, Direction direction) {
-        return get(row + direction.dx, column + direction.dy);
+        return get(row + direction.dy, column + direction.dx);
     }
     
     /**
@@ -181,9 +181,13 @@ public class Ocean extends Observable {
      */
     public void setDelay(int delay) {
         this.delay = delay;
-        if (timer != null) {
-        	timer.schedule(new Strobe(), delay);
-        }
+        timer.cancel();
+        timer = new Timer(true);
+        timer.schedule(new Strobe(), 0, delay); //
+        
+//        if (timer != null) {
+//        	timer.schedule(new Strobe(), delay);
+//        }
     }
      
     /**

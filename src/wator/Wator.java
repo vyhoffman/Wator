@@ -1,7 +1,5 @@
 package wator;
 
-//Unneccessary comment
-
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -47,7 +45,6 @@ public class Wator extends JFrame {
     private JTextField sharkGestationPeriod = new JTextField("20");
     private JTextField fishGestationPeriod = new JTextField("10");
     private JTextField sharkStarvationPeriod = new JTextField("20");
-    private JTextField fishStarvationPeriod = new JTextField("40");
     private TitledBorder sharkBorder = new TitledBorder("Sharks");
     private TitledBorder fishBorder = new TitledBorder("Fish");
     
@@ -88,8 +85,6 @@ public class Wator extends JFrame {
         fishPanel.add(fishCount);
         fishPanel.add(new JLabel("Gestation period:"));
         fishPanel.add(fishGestationPeriod);
-        fishPanel.add(new JLabel("Starvation period:"));
-        fishPanel.add(fishStarvationPeriod);
         
         runPanel.setLayout(new BorderLayout());
         runPanel.add(speedControlPanel, BorderLayout.CENTER);
@@ -147,7 +142,7 @@ public class Wator extends JFrame {
             @Override
             public void stateChanged(ChangeEvent e) {
                 int sliderValue = speedControl.getValue();
-                int delay = 10000 - 100 * sliderValue;
+                int delay = 501 - 5 * sliderValue;
                 ocean.setDelay(delay);
                 //ocean.setRunning(!running);
                 //ocean.setRunning(running);
@@ -169,7 +164,6 @@ public class Wator extends JFrame {
             
             count = Integer.valueOf(fishCount.getText());
             gestation = Integer.valueOf(fishGestationPeriod.getText());
-            starvation = Integer.valueOf(fishStarvationPeriod.getText());
             Parameters.setFishStatistics(count, gestation, starvation);
             
             ocean.fillWithWater();

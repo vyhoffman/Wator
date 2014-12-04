@@ -33,6 +33,7 @@ public class Shark extends Denizen {
     public void makeOneStep(Ocean ocean) {
         Denizen[][] array = ocean.getArray();
         timeToStarvation -= 1;
+        timeToGestation -= 1;
         if (timeToStarvation <= 0) {
             array[myRow][myColumn] = WATER;
             System.out.println(this + " starved.");
@@ -68,7 +69,12 @@ public class Shark extends Denizen {
         } else {
             ocean.set(myRow, myColumn, WATER);
         }
-        ocean.set(myRow, myColumn, direction, this);
+        myRow = (myRow + direction.dy + ocean.getNRows()) % ocean.getNRows();
+        myColumn = (myColumn + direction.dx + ocean.getNColumns()) % ocean.getNColumns();
+        if (ocean.get(myRow, myColumn) instanceof Fish) {
+        	timeToStarvation = Parameters.sharkStarvationPeriod;
+        }
+        ocean.set(myRow, myColumn, this);
         justMoved = true;
     }
 

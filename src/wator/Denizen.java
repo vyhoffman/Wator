@@ -77,6 +77,7 @@ public abstract class Denizen {
 //            System.out.println(this + " starved.");
 //            return;
 //        }
+    	timeToGestation -= 1;
         Direction direction = chooseRandomDirection();
         if (canMove(ocean, direction)) {
             moveAndMaybeGiveBirth(ocean, direction);

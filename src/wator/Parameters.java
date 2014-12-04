@@ -18,7 +18,6 @@ public class Parameters {
     
     static int numberOfFish;
     static int fishGestationPeriod;
-    static int fishStarvationPeriod;
     
     /**
      * Sets the parameters for sharks.
@@ -41,6 +40,5 @@ public class Parameters {
     public static void setFishStatistics(int n, int g, int s) {
         numberOfFish = n;
         fishGestationPeriod = g;
-        fishStarvationPeriod = s;
     }
 }

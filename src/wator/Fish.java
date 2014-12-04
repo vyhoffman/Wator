@@ -46,7 +46,9 @@ public class Fish extends Denizen {
         } else {
             ocean.set(myRow, myColumn, WATER);
         }
-        ocean.set(myRow, myColumn, direction, this);
+        myRow = (myRow + direction.dy) % ocean.getNRows();
+        myColumn = (myColumn + direction.dx) % ocean.getNColumns();
+        ocean.set(myRow, myColumn, this);
         justMoved = true;
         System.out.println(this + " just moved.");
     }
