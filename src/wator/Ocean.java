@@ -169,7 +169,7 @@ public class Ocean extends Observable {
     public void setRunning(boolean running) {
         if (running) {
             timer = new Timer(true);
-            timer.schedule(new Strobe(), 0, delay); //
+            timer.schedule(new Strobe(), 0, delay);
         } else {
             timer.cancel();
         }
@@ -183,11 +183,7 @@ public class Ocean extends Observable {
         this.delay = delay;
         timer.cancel();
         timer = new Timer(true);
-        timer.schedule(new Strobe(), 0, delay); //
-        
-//        if (timer != null) {
-//        	timer.schedule(new Strobe(), delay);
-//        }
+        timer.schedule(new Strobe(), 0, delay);
     }
      
     /**

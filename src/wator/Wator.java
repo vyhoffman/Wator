@@ -26,9 +26,10 @@ import javax.swing.event.ChangeListener;
  *  die of old age.
  *  
  * @author David Matuszek
+ * @authors Nicki Hoffman and Anders Schneider
  */
 public class Wator extends JFrame {
-    private static final long serialVersionUID = 1L; // Vestigal; unused
+    private static final long serialVersionUID = 1L; // Vestigial; unused
     private Display display = new Display();
     private JPanel controlPanel = new JPanel();
     private JPanel statisticsPanel = new JPanel();
@@ -144,8 +145,6 @@ public class Wator extends JFrame {
                 int sliderValue = speedControl.getValue();
                 int delay = 501 - 5 * sliderValue;
                 ocean.setDelay(delay);
-                //ocean.setRunning(!running);
-                //ocean.setRunning(running);
             }
             
         });

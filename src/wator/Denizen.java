@@ -70,13 +70,6 @@ public abstract class Denizen {
      * @param ocean The Ocean containing all the Denizens.
      */
     public void makeOneStep(Ocean ocean) {
-//        Denizen[][] array = ocean.getArray();
-//        timeToStarvation -= 1;
-//        if (timeToStarvation <= 0) {
-//            array[myRow][myColumn] = WATER;
-//            System.out.println(this + " starved.");
-//            return;
-//        }
     	timeToGestation -= 1;
         Direction direction = chooseRandomDirection();
         if (canMove(ocean, direction)) {

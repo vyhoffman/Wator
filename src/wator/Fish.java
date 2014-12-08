@@ -14,7 +14,7 @@ public class Fish extends Denizen {
      */
      public Fish(int row, int column) {
         super(row, column);
-        timeToGestation = Parameters.fishGestationPeriod; //removed timetostarvation
+        timeToGestation = Parameters.fishGestationPeriod;
     }
     
     @Override
